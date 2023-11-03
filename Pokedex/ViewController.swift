@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         weightLabelText.translatesAutoresizingMaskIntoConstraints = false
         weightLabelText.text = "Weight"
         weightLabelText.textColor = .gray
-        weightLabelText.textAlignment = .center
+//        weightLabelText.textAlignment = .center
         weightLabelText.font = UIFont.boldSystemFont(ofSize: 11)
         return weightLabelText
     }()
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         heightLabelText.translatesAutoresizingMaskIntoConstraints = false
         heightLabelText.text = "Height"
         heightLabelText.textColor = .gray
-        heightLabelText.textAlignment = .center
+//        heightLabelText.textAlignment = .center
         heightLabelText.font = UIFont.boldSystemFont(ofSize: 11)
         return heightLabelText
     }()
@@ -93,11 +93,26 @@ class ViewController: UIViewController {
         movesLabelText.translatesAutoresizingMaskIntoConstraints = false
         movesLabelText.text = "Moves"
         movesLabelText.textColor = .gray
-        movesLabelText.textAlignment = .center
+//        movesLabelText.textAlignment = .center
         movesLabelText.font = UIFont.boldSystemFont(ofSize: 11)
         return movesLabelText
     }()
     
+    let descriptionLabel : UILabel = {
+        let descriptionLabel = UILabel()
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.text = "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger."
+//        descriptionLabel.textAlignment = .center
+        descriptionLabel.font = UIFont(name: "Poppins", size: 13)
+        descriptionLabel.numberOfLines = 0
+        return descriptionLabel
+    }()
+    
+    let statsTableView : UITableView = {
+        let statsTableView = UITableView()
+        statsTableView.translatesAutoresizingMaskIntoConstraints = false
+        return statsTableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,6 +133,7 @@ class ViewController: UIViewController {
         view.addSubview(weightLabelText)
         view.addSubview(heightLabelText)
         view.addSubview(movesLabelText)
+        view.addSubview(descriptionLabel)
         
         NSLayoutConstraint.activate([
             pokeName.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -149,20 +165,24 @@ class ViewController: UIViewController {
             movesLabel.widthAnchor.constraint(equalToConstant: 100),
            
             weightLabelText.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 30),
-            weightLabelText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
+//            weightLabelText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
             weightLabelText.centerXAnchor.constraint(equalTo: weightLabel.centerXAnchor),
             weightLabelText.widthAnchor.constraint(equalToConstant: 100),
             
             heightLabelText.topAnchor.constraint(equalTo: heightLabel.bottomAnchor, constant: 30),
             heightLabelText.centerXAnchor.constraint(equalTo: heightLabel.centerXAnchor),
-            heightLabelText.leadingAnchor.constraint(equalTo: weightLabelText.trailingAnchor, constant: 30),
+//            heightLabelText.leadingAnchor.constraint(equalTo: weightLabelText.trailingAnchor, constant: 30),
             heightLabelText.widthAnchor.constraint(equalToConstant: 100),
             
-            movesLabelText.topAnchor.constraint(equalTo: movesLabel.bottomAnchor, constant: 30),
-            movesLabelText.leadingAnchor.constraint(equalTo: heightLabelText.trailingAnchor, constant: 30),
+//            movesLabelText.topAnchor.constraint(equalTo: movesLabel.bottomAnchor),
+//            movesLabelText.leadingAnchor.constraint(equalTo: heightLabelText.trailingAnchor, constant: 30),
             movesLabelText.centerXAnchor.constraint(equalTo: movesLabel.centerXAnchor),
             movesLabelText.widthAnchor.constraint(equalToConstant: 100),
+            movesLabelText.bottomAnchor.constraint(equalTo: heightLabelText.bottomAnchor),
             
+            descriptionLabel.topAnchor.constraint(equalTo: weightLabelText.bottomAnchor, constant: 20),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             
             contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
             contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
